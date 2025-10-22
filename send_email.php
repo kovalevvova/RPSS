@@ -47,6 +47,10 @@ function is_spam($data, $ip) {
         return true;
     }
 
+    // Проверка слишком короткого сообщения (если указано)
+    if (!empty($data['message']) && strlen(trim($data['message'])) < 5) {
+        return true;
+    }
 
     // Проверка частоты запросов
     global $max_requests_per_hour;
