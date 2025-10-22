@@ -19,8 +19,8 @@
                     </div>
                 </div>
                 <div class="contact-info">
-                    <div class="phone">+7 (495) 123-45-67</div>
-                    <div class="work-hours">Пн-Пт: 8:30-17:00, Сб-Вс: выходной</div>
+                    <div class="phone">+7(82144) 52-0-41</div>
+                    <div class="work-hours">Пн-Пт: 8:30-17:00, Сб-Вс: выходные</div>
                 </div>
             </div>
         </div>
@@ -146,32 +146,65 @@
                     <div class="contact-details">
                         <div class="contact-item">
                             <div class="contact-icon">📞</div>
-                            <div>+7 (495) 123-45-67</div>
+                            <div>
+                                <div>+7(82144) 52-0-41</div>
+                                <div>+7(82144) 52-0-51</div>
+                                <div>8 912 95 644 74</div>
+                            </div>
                         </div>
                         <div class="contact-item">
                             <div class="contact-icon">✉️</div>
-                            <div>kovalev.vova@list.ru</div>
+                            <div>rpss-2017@mail.ru</div>
                         </div>
                         <div class="contact-item">
                             <div class="contact-icon">📍</div>
-                            <div>Республика Коми, Усинск р-н, г Усинск, Промышленная ул, д. 19, офис 35 (2 этаж)</div>
+                            <div>
+                                Республика Коми, Усинск р-н,<br>
+                                г. Усинск, Промышленная ул,<br>
+                                д. 19, офис 35 (2 этаж)
+                            </div>
                         </div>
                         <div class="contact-item">
                             <div class="contact-icon">🕒</div>
-                            <div>Пн-Пт: 8:30-17:00, Сб-Вс: выходной</div>
+                            <div>Пн-Пт: 8:30-17:00<br>Сб-Вс: выходные</div>
                         </div>
                     </div>
                     <h3>Зона обслуживания</h3>
-                    <p>Мы работаем по г.Усинск и республике Коми.</p>
+                    <p>Мы работаем по Усинску и Усинскому району. Возможен выезд в другие районы Республики Коми для крупных объектов.</p>
                 </div>
                 <div class="contact-form">
                     <h3>Оставьте заявку</h3>
-                    <form>
-                        <input type="text" placeholder="Ваше имя" required>
-                        <input type="tel" placeholder="Ваш телефон" required>
-                        <input type="email" placeholder="Ваш e-mail">
-                        <textarea placeholder="Сообщение" rows="5"></textarea>
-                        <button type="submit">Отправить заявку</button>
+                    <div id="form-message" class="form-message"></div>
+                    <div id="timer-info" class="timer-info"></div>
+                    <form id="contact-form">
+                        <!-- Скрытые поля для защиты от спама -->
+                        <input type="text" name="company" class="hp-field" autocomplete="off">
+                        <input type="email" name="email_confirm" class="hp-field" autocomplete="off">
+                        <input type="checkbox" name="agree_terms" class="hp-field" value="1" checked>
+
+                        <input type="text" id="name" name="name" placeholder="Ваше имя *" required>
+                        <div id="name-error" class="error-message">Пожалуйста, введите ваше имя</div>
+
+                        <input type="tel" id="phone" name="phone" placeholder="Ваш телефон *" required>
+                        <div id="phone-error" class="error-message">Пожалуйста, введите корректный номер телефона</div>
+
+                        <input type="email" id="email" name="email" placeholder="Ваш e-mail">
+                        <div id="email-error" class="error-message">Пожалуйста, введите корректный email</div>
+
+                        <!-- Поле с вопросом для защиты от ботов -->
+                        <select id="security_question" name="security_question" required>
+                            <option value="">Выберите тип объекта *</option>
+                            <option value="apartment">Квартира</option>
+                            <option value="house">Частный дом</option>
+                            <option value="office">Офис</option>
+                            <option value="commercial">Коммерческое помещение</option>
+                            <option value="other">Другое</option>
+                        </select>
+                        <div id="security_question-error" class="error-message">Пожалуйста, выберите тип объекта</div>
+
+                        <textarea id="message" name="message" placeholder="Сообщение" rows="5"></textarea>
+
+                        <button type="submit" id="submit-btn" disabled>Отправить заявку</button>
                     </form>
                 </div>
             </div>
@@ -184,7 +217,7 @@
             <div class="footer-content">
                 <div class="footer-column">
                     <h3>Региональная пожарно-спасательная служба</h3>
-                    <p>Надежная защита вашего имущества от пожара с 2010 года.</p>
+                    <p>Надежная защита вашего имущества от пожара с 2017 года.</p>
                 </div>
                 <div class="footer-column">
                     <h3>Услуги</h3>
@@ -198,9 +231,11 @@
                 <div class="footer-column">
                     <h3>Контакты</h3>
                     <ul class="footer-links">
-                        <li>+7 (495) 123-45-67</li>
-                        <li>kovalev.vova@list.ru</li>
-                        <li>Республика Коми, Усинск р-н, г Усинск, Промышленная ул, д. 19, офис 35 (2 этаж)</li>
+                        <li>+7(82144) 52-0-41</li>
+                        <li>+7(82144) 52-0-51</li>
+                        <li>8 912 95 644 74</li>
+                        <li>rpss-2017@mail.ru</li>
+                        <li>г. Усинск, Промышленная ул, д. 19, офис 35</li>
                     </ul>
                 </div>
             </div>
@@ -209,5 +244,7 @@
             </div>
         </div>
     </footer>
+    <script src="./script.js"></script>
+
 </body>
 </html>

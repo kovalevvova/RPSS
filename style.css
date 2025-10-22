@@ -1,4 +1,4 @@
- * {
+* {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
@@ -56,7 +56,7 @@
         }
 
         .phone {
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             font-weight: bold;
             margin-bottom: 5px;
         }
@@ -262,7 +262,7 @@
 
         .contact-item {
             display: flex;
-            align-items: center;
+            align-items: flex-start;
             margin-bottom: 15px;
         }
 
@@ -270,10 +270,12 @@
             margin-right: 15px;
             font-size: 1.2rem;
             color: #ff9800;
+            margin-top: 3px;
         }
 
         .contact-form input,
-        .contact-form textarea {
+        .contact-form textarea,
+        .contact-form select {
             width: 100%;
             padding: 12px;
             margin-bottom: 20px;
@@ -281,6 +283,21 @@
             border-radius: 5px;
             background-color: #444;
             color: white;
+        }
+
+        .contact-form input.error,
+        .contact-form textarea.error,
+        .contact-form select.error {
+            border: 1px solid #f44336;
+            background-color: #552222;
+        }
+
+        .error-message {
+            color: #f44336;
+            font-size: 0.8rem;
+            margin-top: -15px;
+            margin-bottom: 15px;
+            display: none;
         }
 
         .contact-form button {
@@ -292,10 +309,31 @@
             cursor: pointer;
             font-weight: bold;
             transition: background-color 0.3s;
+            width: 100%;
         }
 
         .contact-form button:hover {
             background-color: #f57c00;
+        }
+
+        .contact-form button:disabled {
+            background-color: #777;
+            cursor: not-allowed;
+        }
+
+        /* Скрытые поля для защиты от спама */
+        .hp-field {
+            position: absolute;
+            left: -5000px;
+            opacity: 0;
+        }
+
+        /* Таймер */
+        .timer-info {
+            text-align: center;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+            color: #ff9800;
         }
 
         /* Подвал */
@@ -315,8 +353,9 @@
 
         .footer-column {
             flex: 1;
-            min-width: 200px;
+            min-width: 250px;
             margin-bottom: 20px;
+            text-align: left;
         }
 
         .footer-column h3 {
@@ -349,6 +388,27 @@
             font-size: 0.9rem;
         }
 
+        /* Сообщения формы */
+        .form-message {
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+            text-align: center;
+            display: none;
+        }
+
+        .form-message.success {
+            background-color: #4CAF50;
+            color: white;
+            display: block;
+        }
+
+        .form-message.error {
+            background-color: #f44336;
+            color: white;
+            display: block;
+        }
+
         /* Адаптивность */
         @media (max-width: 768px) {
             .header-content {
@@ -370,5 +430,9 @@
 
             .hero p {
                 font-size: 1rem;
+            }
+
+            .footer-column {
+                text-align: center;
             }
         }
