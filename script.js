@@ -1,73 +1,27 @@
-// Валидация email
-function validateEmail(email) {
-    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return re.test(email);
-}
+// Preloader
+window.addEventListener('load', function() {
+    const preloader = document.querySelector('.preloader');
+    setTimeout(() => {
+        preloader.classList.add('fade-out');
+        setTimeout(() => {
+            preloader.style.display = 'none';
+        }, 500);
+    }, 1000);
+});
 
-// Валидация телефона
-function validatePhone(phone) {
-    const cleaned = phone.replace(/[^\d+]/g, '');
-    const digits = cleaned.replace(/\D/g, '');
-    return digits.length >= 10 && digits.length <= 15;
-}
+// Mobile Menu
+document.addEventListener('DOMContentLoaded', function() {
+    const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+    const navLinks = document.querySelector('.nav-links');
 
-// Валидация формы
-function validateForm() {
-    let isValid = true;
-
-    // Валидация имени
-    const name = document.getElementById('name').value.trim();
-    const nameError = document.getElementById('name-error');
-    if (name === '') {
-        document.getElementById('name').classList.add('error');
-        nameError.style.display = 'block';
-        isValid = false;
-    } else {
-        document.getElementById('name').classList.remove('error');
-        nameError.style.display = 'none';
+    if (mobileMenuBtn) {
+        mobileMenuBtn.addEventListener('click', function() {
+            navLinks.classList.toggle('active');
+            this.classList.toggle('active');
+        });
     }
 
-    // Валидация телефона
-    const phone = document.getElementById('phone').value.trim();
-    const phoneError = document.getElementById('phone-error');
-    if (phone === '' || !validatePhone(phone)) {
-        document.getElementById('phone').classList.add('error');
-        phoneError.style.display = 'block';
-        isValid = false;
-    } else {
-        document.getElementById('phone').classList.remove('error');
-        phoneError.style.display = 'none';
-    }
-
-    // Валидация email (если указан)
-    const email = document.getElementById('email').value.trim();
-    const emailError = document.getElementById('email-error');
-    if (email !== '' && !validateEmail(email)) {
-        document.getElementById('email').classList.add('error');
-        emailError.style.display = 'block';
-        isValid = false;
-    } else {
-        document.getElementById('email').classList.remove('error');
-        emailError.style.display = 'none';
-    }
-
-    // Валидация типа объекта
-    const objectType = document.getElementById('object_type').value;
-    const objectTypeError = document.getElementById('object_type-error');
-    if (objectType === '') {
-        document.getElementById('object_type').classList.add('error');
-        objectTypeError.style.display = 'block';
-        isValid = false;
-    } else {
-        document.getElementById('object_type').classList.remove('error');
-        objectTypeError.style.display = 'none';
-    }
-
-    return isValid;
-}
-
-// Плавная прокрутка
-function initSmoothScroll() {
+    // Smooth Scroll
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
@@ -77,85 +31,235 @@ function initSmoothScroll() {
                     behavior: 'smooth',
                     block: 'start'
                 });
+
+                // Close mobile menu if open
+                if (navLinks.classList.contains('active')) {
+                    navLinks.classList.remove('active');
+                    mobileMenuBtn.classList.remove('active');
+                }
             }
         });
     });
+
+    // Header scroll effect
+    const header = document.querySelector('.header');
+    window.addEventListener('scroll', function() {
+        if (window.scrollY > 100) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+    });
+
+    // Scroll to top button
+    const scrollToTopBtn = document.querySelector('.scroll-to-top');
+    window.addEventListener('scroll', function() {
+        if (window.scrollY > 500) {
+            scrollToTopBtn.classList.add('visible');
+        } else {
+            scrollToTopBtn.classList.remove('visible');
+        }
+    });
+
+    scrollToTopBtn.addEventListener('click', function() {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+
+    // Form validation and submission
+    const contactForm = document.getElementById('contact-form');
+    if (contactForm) {
+        // Real-time validation
+        const inputs = contactForm.querySelectorAll('input, select, textarea');
+        inputs.forEach(input => {
+            input.addEventListener('blur', validateField);
+            input.addEventListener('input', clearError);
+        });
+
+        contactForm.addEventListener('submit', handleFormSubmit);
+    }
+
+    // Intersection Observer for animations
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver(function(entries) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, observerOptions);
+
+    // Observe elements for animation
+    document.querySelectorAll('.fade-in').forEach(el => {
+        observer.observe(el);
+    });
+});
+
+// Form validation functions
+function validateEmail(email) {
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return re.test(email);
 }
 
-// Основной код
-document.addEventListener('DOMContentLoaded', function() {
-    // Инициализация плавной прокрутки
-    initSmoothScroll();
+function validatePhone(phone) {
+    const cleaned = phone.replace(/[^\d+]/g, '');
+    const digits = cleaned.replace(/\D/g, '');
+    return digits.length >= 10 && digits.length <= 15;
+}
 
-    // Валидация в реальном времени
-    document.getElementById('name').addEventListener('blur', validateForm);
-    document.getElementById('phone').addEventListener('blur', validateForm);
-    document.getElementById('email').addEventListener('blur', validateForm);
-    document.getElementById('object_type').addEventListener('change', validateForm);
+function validateField(e) {
+    const field = e.target;
+    const value = field.value.trim();
+    const errorElement = document.getElementById(field.id + '-error');
 
-    // Обработка отправки формы
-    document.getElementById('contact-form').addEventListener('submit', function(e) {
-        e.preventDefault();
-        console.log('Форма отправлена');
+    switch(field.type) {
+        case 'text':
+            if (field.id === 'name') {
+                if (value === '') {
+                    showError(field, errorElement, 'Пожалуйста, введите ваше имя');
+                } else {
+                    clearError(field, errorElement);
+                }
+            }
+            break;
 
-        if (!validateForm()) {
-            document.getElementById('form-message').textContent = 'Пожалуйста, исправьте ошибки в форме.';
-            document.getElementById('form-message').className = 'form-message error';
-            document.getElementById('form-message').style.display = 'block';
-            return;
+        case 'tel':
+            if (value === '' || !validatePhone(value)) {
+                showError(field, errorElement, 'Пожалуйста, введите корректный номер телефона');
+            } else {
+                clearError(field, errorElement);
+            }
+            break;
+
+        case 'email':
+            if (value !== '' && !validateEmail(value)) {
+                showError(field, errorElement, 'Пожалуйста, введите корректный email');
+            } else {
+                clearError(field, errorElement);
+            }
+            break;
+    }
+
+    if (field.tagName === 'SELECT' && field.required) {
+        if (value === '') {
+            showError(field, errorElement, 'Пожалуйста, выберите тип объекта');
+        } else {
+            clearError(field, errorElement);
         }
+    }
+}
 
-        const form = e.target;
-        const formData = new FormData(form);
-        const messageDiv = document.getElementById('form-message');
+function showError(field, errorElement, message) {
+    field.classList.add('error');
+    if (errorElement) {
+        errorElement.textContent = message;
+        errorElement.style.display = 'block';
+    }
+}
 
-        // Показываем сообщение о отправке
-        messageDiv.textContent = 'Отправка заявки...';
-        messageDiv.className = 'form-message';
-        messageDiv.style.display = 'block';
+function clearError(e) {
+    const field = e.target;
+    const errorElement = document.getElementById(field.id + '-error');
+    field.classList.remove('error');
+    if (errorElement) {
+        errorElement.style.display = 'none';
+    }
+}
 
-        // Собираем данные формы
-        const data = {
-            name: formData.get('name'),
-            phone: formData.get('phone'),
-            email: formData.get('email'),
-            object_type: formData.get('object_type'),
-            message: formData.get('message'),
-            timestamp: new Date().toISOString()
-        };
+async function handleFormSubmit(e) {
+    e.preventDefault();
 
-        console.log('Отправляемые данные:', data);
+    // Validate all fields
+    const fields = e.target.querySelectorAll('input, select, textarea');
+    let isValid = true;
 
-        // Отправляем данные на сервер
-        fetch('send_email.php', {
+    fields.forEach(field => {
+        if (field.required) {
+            const event = new Event('blur');
+            field.dispatchEvent(event);
+            if (field.classList.contains('error')) {
+                isValid = false;
+            }
+        }
+    });
+
+    if (!isValid) {
+        showFormMessage('Пожалуйста, исправьте ошибки в форме', 'error');
+        return;
+    }
+
+    const formData = new FormData(e.target);
+    const submitBtn = e.target.querySelector('button[type="submit"]');
+    const originalText = submitBtn.innerHTML;
+
+    // Show loading state
+    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Отправка...';
+    submitBtn.disabled = true;
+
+    // Collect data
+    const data = {
+        name: formData.get('name'),
+        phone: formData.get('phone'),
+        email: formData.get('email'),
+        object_type: formData.get('object_type'),
+        message: formData.get('message'),
+        timestamp: new Date().toISOString()
+    };
+
+    try {
+        const response = await fetch('send_email.php', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify(data)
-        })
-        .then(response => {
-            console.log('Ответ сервера:', response);
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            return response.json();
-        })
-        .then(result => {
-            console.log('Результат:', result);
-            if (result.success) {
-                messageDiv.textContent = 'Заявка успешно отправлена! Мы свяжемся с вами в ближайшее время.';
-                messageDiv.className = 'form-message success';
-                form.reset();
-            } else {
-                messageDiv.textContent = 'Ошибка при отправке заявки. Пожалуйста, попробуйте еще раз или позвоните нам.';
-                messageDiv.className = 'form-message error';
-            }
-        })
-        .catch(error => {
-            console.error('Error:', error);
-            messageDiv.textContent = 'Ошибка при отправке заявки. Пожалуйста, попробуйте еще раз или позвоните нам.';
-            messageDiv.className = 'form-message error';
         });
+
+        const result = await response.json();
+
+        if (result.success) {
+            showFormMessage('Заявка успешно отправлена! Мы свяжемся с вами в ближайшее время.', 'success');
+            e.target.reset();
+        } else {
+            showFormMessage('Ошибка при отправке заявки. Пожалуйста, попробуйте еще раз или позвоните нам.', 'error');
+        }
+    } catch (error) {
+        console.error('Error:', error);
+        showFormMessage('Ошибка при отправке заявки. Пожалуйста, попробуйте еще раз или позвоните нам.', 'error');
+    } finally {
+        // Restore button state
+        submitBtn.innerHTML = originalText;
+        submitBtn.disabled = false;
+    }
+}
+
+function showFormMessage(message, type) {
+    const messageDiv = document.getElementById('form-message');
+    messageDiv.textContent = message;
+    messageDiv.className = `form-message ${type}`;
+    messageDiv.style.display = 'block';
+
+    // Scroll to message
+    messageDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+    // Auto hide success message after 5 seconds
+    if (type === 'success') {
+        setTimeout(() => {
+            messageDiv.style.display = 'none';
+        }, 5000);
+    }
+}
+
+// Add fade-in class to elements for scroll animations
+document.addEventListener('DOMContentLoaded', function() {
+    const elementsToAnimate = document.querySelectorAll('.service-card, .advantage-card, .process-step, .section-header');
+    elementsToAnimate.forEach(el => {
+        el.classList.add('fade-in');
     });
 });

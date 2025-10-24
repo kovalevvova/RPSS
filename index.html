@@ -5,15 +5,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Профессиональная установка и обслуживание пожарной сигнализации в Усинске и Усинском районе. Надежная защита с 2017 года.">
     <title>Региональная пожарно-спасательная служба - установка и обслуживание пожарной сигнализации</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     <link rel="stylesheet" href="./style.css">
 </head>
 <body>
+    <!-- Preloader -->
+    <div class="preloader">
+        <div class="loader">
+            <div class="flame"></div>
+            <p>Загружаемся...</p>
+        </div>
+    </div>
+
     <!-- Шапка -->
-    <header>
+    <header class="header">
         <div class="container">
             <div class="header-content">
                 <div class="logo">
-                    <div class="logo-icon" aria-label="Пожарная безопасность">🔥</div>
+                    <div class="logo-icon">
+                        <i class="fas fa-fire-extinguisher"></i>
+                    </div>
                     <div class="logo-text">
                         <h1>Региональная пожарно-спасательная служба</h1>
                         <p>Надежная защита вашего имущества</p>
@@ -21,119 +40,264 @@
                 </div>
                 <div class="contact-info">
                     <div class="phone">
-                        <a href="tel:+78214452041" class="clickable-phone">+7(82144) 52-0-41</a>
+                        <a href="tel:+78214452041" class="clickable-phone">
+                            <i class="fas fa-phone"></i>
+                            +7(82144) 52-0-41
+                        </a>
                     </div>
-                    <div class="work-hours">Пн-Пт: 8:30-17:00, Сб-Вс: выходные</div>
+                    <div class="work-hours">
+                        <i class="far fa-clock"></i>
+                        Пн-Пт: 8:30-17:00, Сб-Вс: выходные
+                    </div>
                 </div>
+                <button class="mobile-menu-btn">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
             </div>
         </div>
     </header>
 
     <!-- Навигация -->
-    <nav>
+    <nav class="nav">
         <div class="container">
             <ul class="nav-links">
-                <li><a href="#services">Услуги</a></li>
-                <li><a href="#advantages">Преимущества</a></li>
-                <li><a href="#process">Как мы работаем</a></li>
-                <li><a href="#contacts">Контакты</a></li>
+                <li><a href="#services"><i class="fas fa-tools"></i> Услуги</a></li>
+                <li><a href="#advantages"><i class="fas fa-star"></i> Преимущества</a></li>
+                <li><a href="#process"><i class="fas fa-play-circle"></i> Как мы работаем</a></li>
+                <li><a href="#contacts"><i class="fas fa-envelope"></i> Контакты</a></li>
             </ul>
         </div>
     </nav>
 
     <!-- Герой секция -->
     <section class="hero">
+        <div class="hero-background">
+            <div class="hero-overlay"></div>
+        </div>
         <div class="container">
             <div class="hero-content">
-                <h2>Профессиональная установка и обслуживание пожарной сигнализации</h2>
-                <p>Обеспечиваем полную пожарную безопасность для вашего дома, офиса или предприятия. Работаем с физическими и юридическими лицами.</p>
-                <a href="#contacts" class="btn">Заказать консультацию</a>
+                <div class="hero-badge">
+                    <span>Надежная защита с 2017 года</span>
+                </div>
+                <h1 class="hero-title">
+                    Профессиональная установка и обслуживание
+                    <span class="highlight">пожарной сигнализации</span>
+                </h1>
+                <p class="hero-description">
+                    Обеспечиваем полную пожарную безопасность для вашего дома, офиса или предприятия.
+                    Работаем с физическими и юридическими лицами по Усинску и Усинскому району.
+                </p>
+                <div class="hero-actions">
+                    <a href="#contacts" class="btn btn-primary">
+                        <i class="fas fa-calendar-check"></i>
+                        Заказать консультацию
+                    </a>
+                    <a href="#services" class="btn btn-secondary">
+                        <i class="fas fa-info-circle"></i>
+                        Наши услуги
+                    </a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <div class="stat-number">6+</div>
+                        <div class="stat-label">лет опыта</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">500+</div>
+                        <div class="stat-label">объектов защищено</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">24/7</div>
+                        <div class="stat-label">техподдержка</div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Услуги -->
-    <section id="services">
+    <section id="services" class="services-section">
         <div class="container">
-            <h2 class="section-title">Наши услуги</h2>
-            <div class="services">
+            <div class="section-header">
+                <h2 class="section-title">Наши услуги</h2>
+                <p class="section-subtitle">Полный комплекс услуг по пожарной безопасности</p>
+            </div>
+            <div class="services-grid">
                 <div class="service-card">
-                    <div class="service-icon" aria-label="Установка">🔧</div>
+                    <div class="service-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
                     <h3>Установка пожарной сигнализации</h3>
                     <p>Проектирование и монтаж современных систем пожарной сигнализации для объектов любого назначения и сложности.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Проектирование под ключ</li>
+                        <li><i class="fas fa-check"></i> Современное оборудование</li>
+                        <li><i class="fas fa-check"></i> Гарантия качества</li>
+                    </ul>
                 </div>
                 <div class="service-card">
-                    <div class="service-icon" aria-label="Обслуживание">🛠️</div>
+                    <div class="service-icon">
+                        <i class="fas fa-cogs"></i>
+                    </div>
                     <h3>Техническое обслуживание</h3>
                     <p>Регулярное обслуживание, проверка и ремонт систем пожарной сигнализации для обеспечения их бесперебойной работы.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Плановые проверки</li>
+                        <li><i class="fas fa-check"></i> Экстренный ремонт</li>
+                        <li><i class="fas fa-check"></i> Профилактика неисправностей</li>
+                    </ul>
                 </div>
                 <div class="service-card">
-                    <div class="service-icon" aria-label="Проектирование">📋</div>
+                    <div class="service-icon">
+                        <i class="fas fa-drafting-compass"></i>
+                    </div>
                     <h3>Проектирование и согласование</h3>
                     <p>Разработка проектной документации и получение всех необходимых разрешений в контролирующих органах.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Полный пакет документов</li>
+                        <li><i class="fas fa-check"></i> Согласование в МЧС</li>
+                        <li><i class="fas fa-check"></i> Техническая документация</li>
+                    </ul>
                 </div>
                 <div class="service-card">
-                    <div class="service-icon" aria-label="Модернизация">🚨</div>
+                    <div class="service-icon">
+                        <i class="fas fa-sync-alt"></i>
+                    </div>
                     <h3>Модернизация систем</h3>
                     <p>Обновление устаревшего оборудования, интеграция с другими системами безопасности объекта.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Замена оборудования</li>
+                        <li><i class="fas fa-check"></i> Интеграция систем</li>
+                        <li><i class="fas fa-check"></i> Повышение эффективности</li>
+                    </ul>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Преимущества -->
-    <section id="advantages" class="advantages">
+    <section id="advantages" class="advantages-section">
         <div class="container">
-            <h2 class="section-title">Почему выбирают нас</h2>
-            <div class="advantages-list">
-                <div class="advantage-item">
-                    <div class="advantage-icon" aria-label="Оперативность">⏱️</div>
+            <div class="section-header">
+                <h2 class="section-title">Почему выбирают нас</h2>
+                <p class="section-subtitle">Наши конкурентные преимущества</p>
+            </div>
+            <div class="advantages-grid">
+                <div class="advantage-card">
+                    <div class="advantage-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
                     <h3>Оперативность</h3>
-                    <p>Выполняем работы в оговоренные сроки, без задержек и переносов.</p>
+                    <p>Выполняем работы в оговоренные сроки, без задержек и переносов. Срочный выезд в течение 2 часов.</p>
                 </div>
-                <div class="advantage-item">
-                    <div class="advantage-icon" aria-label="Качество">💎</div>
+                <div class="advantage-card">
+                    <div class="advantage-icon">
+                        <i class="fas fa-award"></i>
+                    </div>
                     <h3>Качество</h3>
-                    <p>Используем только сертифицированное оборудование от проверенных производителей.</p>
+                    <p>Используем только сертифицированное оборудование от проверенных производителей с гарантией.</p>
                 </div>
-                <div class="advantage-item">
-                    <div class="advantage-icon" aria-label="Опыт">👨‍💼</div>
+                <div class="advantage-card">
+                    <div class="advantage-icon">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
                     <h3>Опытные специалисты</h3>
                     <p>Наши сотрудники имеют многолетний опыт и регулярно проходят повышение квалификации.</p>
                 </div>
-                <div class="advantage-item">
-                    <div class="advantage-icon" aria-label="Цены">💲</div>
+                <div class="advantage-card">
+                    <div class="advantage-icon">
+                        <i class="fas fa-ruble-sign"></i>
+                    </div>
                     <h3>Доступные цены</h3>
-                    <p>Предлагаем оптимальное соотношение цены и качества для каждого клиента.</p>
+                    <p>Предлагаем оптимальное соотношение цены и качества для каждого клиента. Рассрочка платежа.</p>
+                </div>
+                <div class="advantage-card">
+                    <div class="advantage-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Гарантия безопасности</h3>
+                    <p>Полное соответствие нормам МЧС. Все работы ведутся согласно требованиям законодательства.</p>
+                </div>
+                <div class="advantage-card">
+                    <div class="advantage-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3>Круглосуточная поддержка</h3>
+                    <p>Техническая поддержка 24/7. Быстрое реагирование на любые неисправности системы.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Как мы работаем -->
-    <section id="process">
+    <section id="process" class="process-section">
         <div class="container">
-            <h2 class="section-title">Как мы работаем</h2>
+            <div class="section-header">
+                <h2 class="section-title">Как мы работаем</h2>
+                <p class="section-subtitle">Процесс сотрудничества от заявки до сдачи объекта</p>
+            </div>
             <div class="process-steps">
-                <div class="step">
-                    <div class="step-number">1</div>
-                    <h3>Консультация</h3>
-                    <p>Бесплатный выезд специалиста, оценка объекта и расчет стоимости</p>
+                <div class="process-step">
+                    <div class="step-number">01</div>
+                    <div class="step-content">
+                        <div class="step-icon">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <h3>Консультация</h3>
+                        <p>Бесплатный выезд специалиста, оценка объекта и расчет стоимости. Обсуждение всех деталей проекта.</p>
+                    </div>
                 </div>
-                <div class="step">
-                    <div class="step-number">2</div>
-                    <h3>Проектирование</h3>
-                    <p>Разработка индивидуального проекта с учетом особенностей объекта</p>
+                <div class="process-step">
+                    <div class="step-number">02</div>
+                    <div class="step-content">
+                        <div class="step-icon">
+                            <i class="fas fa-drafting-compass"></i>
+                        </div>
+                        <h3>Проектирование</h3>
+                        <p>Разработка индивидуального проекта с учетом особенностей объекта. Согласование с заказчиком.</p>
+                    </div>
                 </div>
-                <div class="step">
-                    <div class="step-number">3</div>
-                    <h3>Монтаж</h3>
-                    <p>Установка оборудования с соблюдением всех норм и требований</p>
+                <div class="process-step">
+                    <div class="step-number">03</div>
+                    <div class="step-content">
+                        <div class="step-icon">
+                            <i class="fas fa-hammer"></i>
+                        </div>
+                        <h3>Монтаж</h3>
+                        <p>Установка оборудования с соблюдением всех норм и требований. Минимальное вмешательство в отделку.</p>
+                    </div>
                 </div>
-                <div class="step">
-                    <div class="step-number">4</div>
-                    <h3>Сдача в эксплуатацию</h3>
-                    <p>Пуско-наладочные работы и обучение персонала</p>
+                <div class="process-step">
+                    <div class="step-number">04</div>
+                    <div class="step-content">
+                        <div class="step-icon">
+                            <i class="fas fa-clipboard-check"></i>
+                        </div>
+                        <h3>Сдача в эксплуатацию</h3>
+                        <p>Пуско-наладочные работы и обучение персонала. Подписание актов выполненных работ.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Готовы обезопасить свой объект?</h2>
+                <p>Свяжитесь с нами для бесплатной консультации и расчета стоимости</p>
+                <div class="cta-actions">
+                    <a href="#contacts" class="btn btn-light">
+                        <i class="fas fa-phone"></i>
+                        Позвонить сейчас
+                    </a>
+                    <a href="#contacts" class="btn btn-outline-light">
+                        <i class="fas fa-envelope"></i>
+                        Написать сообщение
+                    </a>
                 </div>
             </div>
         </div>
@@ -142,85 +306,116 @@
     <!-- Контакты -->
     <section id="contacts" class="contact-section">
         <div class="container">
-            <h2 class="section-title">Свяжитесь с нами</h2>
+            <div class="section-header">
+                <h2 class="section-title">Свяжитесь с нами</h2>
+                <p class="section-subtitle">Мы всегда готовы ответить на ваши вопросы</p>
+            </div>
             <div class="contact-container">
                 <div class="contact-info">
-                    <h3>Наши контакты</h3>
-                    <div class="contact-details">
-                        <div class="contact-item">
-                            <div class="contact-icon" aria-label="Телефон">📞</div>
-                            <div>
-                                <div><a href="tel:+78214452041" class="clickable-phone">+7(82144) 52-0-41</a></div>
-                                <div><a href="tel:+78214452051" class="clickable-phone">+7(82144) 52-0-51</a></div>
-                                <div><a href="tel:+79129564474" class="clickable-phone">8 912 95 644 74</a></div>
-                            </div>
-                        </div>
-                        <div class="contact-item">
-                            <div class="contact-icon" aria-label="Email">✉️</div>
-                            <div><a href="mailto:rpss-2017@mail.ru">rpss-2017@mail.ru</a></div>
-                        </div>
-                        <div class="contact-item">
-                            <div class="contact-icon" aria-label="Адрес">📍</div>
-                            <div>
-                                <a href="https://yandex.ru/maps/?text=Республика Коми, Усинск, Промышленная ул, д. 19, офис 35" target="_blank">
-                                    Республика Коми, Усинск р-н,<br>
-                                    г. Усинск, Промышленная ул,<br>
-                                    д. 19, офис 35 (2 этаж)
-                                </a>
-                            </div>
-                        </div>
-                        <div class="contact-item">
-                            <div class="contact-icon" aria-label="Время работы">🕒</div>
-                            <div>Пн-Пт: 8:30-17:00<br>Сб-Вс: выходные</div>
+                    <div class="contact-card">
+                        <h3><i class="fas fa-map-marker-alt"></i> Наш адрес</h3>
+                        <p>
+                            Республика Коми, Усинск р-н,<br>
+                            г. Усинск, Промышленная ул,<br>
+                            д. 19, офис 35 (2 этаж)
+                        </p>
+                    </div>
+                    <div class="contact-card">
+                        <h3><i class="fas fa-phone"></i> Телефоны</h3>
+                        <div class="phones">
+                            <a href="tel:+78214452041">+7(82144) 52-0-41</a>
+                            <a href="tel:+78214452051">+7(82144) 52-0-51</a>
+                            <a href="tel:+79129564474">8 912 95 644 74</a>
                         </div>
                     </div>
-                    <h3>Зона обслуживания</h3>
-                    <p>Мы работаем по Усинску и Усинскому району. Возможен выезд в другие районы Республики Коми для крупных объектов.</p>
+                    <div class="contact-card">
+                        <h3><i class="fas fa-envelope"></i> Email</h3>
+                        <a href="mailto:rpss-2017@mail.ru">rpss-2017@mail.ru</a>
+                    </div>
+                    <div class="contact-card">
+                        <h3><i class="far fa-clock"></i> Время работы</h3>
+                        <p>Пн-Пт: 8:30-17:00<br>Сб-Вс: выходные</p>
+                    </div>
+                    <div class="contact-card">
+                        <h3><i class="fas fa-truck"></i> Зона обслуживания</h3>
+                        <p>Мы работаем по Усинску и Усинскому району. Возможен выезд в другие районы Республики Коми для крупных объектов.</p>
+                    </div>
                 </div>
-                <div class="contact-form">
-                    <h3>Оставьте заявку</h3>
-                    <div id="form-message" class="form-message"></div>
-                    <form id="contact-form">
-                        <!-- Убраны все honeypot поля -->
+                <div class="contact-form-wrapper">
+                    <div class="contact-form-card">
+                        <h3>Оставьте заявку</h3>
+                        <p>Мы перезвоним вам в течение 15 минут</p>
+                        <div id="form-message" class="form-message"></div>
+                        <form id="contact-form">
+                            <div class="form-group">
+                                <input type="text" id="name" name="name" placeholder=" " required>
+                                <label for="name">Ваше имя *</label>
+                                <div id="name-error" class="error-message">Пожалуйста, введите ваше имя</div>
+                            </div>
 
-                        <input type="text" id="name" name="name" placeholder="Ваше имя *" required>
-                        <div id="name-error" class="error-message">Пожалуйста, введите ваше имя</div>
+                            <div class="form-group">
+                                <input type="tel" id="phone" name="phone" placeholder=" " required>
+                                <label for="phone">Ваш телефон *</label>
+                                <div id="phone-error" class="error-message">Пожалуйста, введите корректный номер телефона</div>
+                            </div>
 
-                        <input type="tel" id="phone" name="phone" placeholder="Ваш телефон *" required>
-                        <div id="phone-error" class="error-message">Пожалуйста, введите корректный номер телефона</div>
+                            <div class="form-group">
+                                <input type="email" id="email" name="email" placeholder=" ">
+                                <label for="email">Ваш e-mail</label>
+                                <div id="email-error" class="error-message">Пожалуйста, введите корректный email</div>
+                            </div>
 
-                        <input type="email" id="email" name="email" placeholder="Ваш e-mail">
-                        <div id="email-error" class="error-message">Пожалуйста, введите корректный email</div>
+                            <div class="form-group">
+                                <select id="object_type" name="object_type" required>
+                                    <option value=""> </option>
+                                    <option value="apartment">Квартира</option>
+                                    <option value="house">Частный дом</option>
+                                    <option value="office">Офис</option>
+                                    <option value="commercial">Коммерческое помещение</option>
+                                    <option value="other">Другое</option>
+                                </select>
+                                <label for="object_type">Тип объекта *</label>
+                                <div id="object_type-error" class="error-message">Пожалуйста, выберите тип объекта</div>
+                            </div>
 
-                        <select id="object_type" name="object_type" required>
-                            <option value="">Выберите тип объекта *</option>
-                            <option value="apartment">Квартира</option>
-                            <option value="house">Частный дом</option>
-                            <option value="office">Офис</option>
-                            <option value="commercial">Коммерческое помещение</option>
-                            <option value="other">Другое</option>
-                        </select>
-                        <div id="object_type-error" class="error-message">Пожалуйста, выберите тип объекта</div>
+                            <div class="form-group">
+                                <textarea id="message" name="message" placeholder=" " rows="4"></textarea>
+                                <label for="message">Сообщение</label>
+                            </div>
 
-                        <textarea id="message" name="message" placeholder="Сообщение" rows="5"></textarea>
-
-                        <button type="submit" id="submit-btn">Отправить заявку</button>
-                    </form>
+                            <button type="submit" class="btn btn-primary btn-block">
+                                <i class="fas fa-paper-plane"></i>
+                                Отправить заявку
+                            </button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Подвал -->
-    <footer>
+    <footer class="footer">
         <div class="container">
             <div class="footer-content">
-                <div class="footer-column">
-                    <h3>Региональная пожарно-спасательная служба</h3>
-                    <p>Надежная защита вашего имущества от пожара с 2017 года.</p>
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <div class="logo-icon">
+                            <i class="fas fa-fire-extinguisher"></i>
+                        </div>
+                        <div class="footer-logo-text">
+                            <h3>Региональная пожарно-спасательная служба</h3>
+                            <p>Надежная защита вашего имущества от пожара с 2017 года.</p>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-vk"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-telegram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-whatsapp"></i></a>
+                    </div>
                 </div>
-                <div class="footer-column">
-                    <h3>Услуги</h3>
+                <div class="footer-section">
+                    <h4>Услуги</h4>
                     <ul class="footer-links">
                         <li><a href="#services">Установка сигнализации</a></li>
                         <li><a href="#services">Обслуживание систем</a></li>
@@ -228,22 +423,37 @@
                         <li><a href="#services">Модернизация</a></li>
                     </ul>
                 </div>
-                <div class="footer-column">
-                    <h3>Контакты</h3>
+                <div class="footer-section">
+                    <h4>Контакты</h4>
                     <ul class="footer-links">
                         <li><a href="tel:+78214452041">+7(82144) 52-0-41</a></li>
                         <li><a href="tel:+78214452051">+7(82144) 52-0-51</a></li>
                         <li><a href="tel:+79129564474">8 912 95 644 74</a></li>
                         <li><a href="mailto:rpss-2017@mail.ru">rpss-2017@mail.ru</a></li>
-                        <li><a href="https://yandex.ru/maps/?text=Республика Коми, Усинск, Промышленная ул, д. 19, офис 35" target="_blank">г. Усинск, Промышленная ул, д. 19, офис 35</a></li>
+                        <li>г. Усинск, Промышленная ул, д. 19, офис 35</li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Информация</h4>
+                    <ul class="footer-links">
+                        <li><a href="#advantages">О компании</a></li>
+                        <li><a href="#process">Как мы работаем</a></li>
+                        <li><a href="#contacts">Контакты</a></li>
+                        <li><a href="#">Политика конфиденциальности</a></li>
                     </ul>
                 </div>
             </div>
-            <div class="copyright">
+            <div class="footer-bottom">
                 <p>&copy; 2023 Региональная пожарно-спасательная служба. Все права защищены.</p>
             </div>
         </div>
     </footer>
+
+    <!-- Кнопка "Наверх" -->
+    <button class="scroll-to-top">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
     <script src="./script.js"></script>
 </body>
 </html>
