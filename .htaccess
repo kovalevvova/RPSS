@@ -1,0 +1,30 @@
+# Запретить доступ к лог-файлам
+<Files "*.log">
+    Order allow,deny
+    Deny from all
+</Files>
+
+# Запретить доступ к директории logs
+<Directory "logs">
+    Order allow,deny
+    Deny from all
+</Directory>
+
+# Включить CORS для API
+Header always set Access-Control-Allow-Origin "https://yourdomain.com"
+Header always set Access-Control-Allow-Methods "POST, OPTIONS"
+Header always set Access-Control-Allow-Headers "Content-Type, X-CSRF-Token"
+
+# Безопасные заголовки
+Header always set X-Content-Type-Options "nosniff"
+Header always set X-Frame-Options "SAMEORIGIN"
+Header always set X-XSS-Protection "1; mode=block"
+
+# Кэширование статических файлов
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType text/css "access plus 1 month"
+    ExpiresByType application/javascript "access plus 1 month"
+    ExpiresByType image/jpeg "access plus 1 month"
+    ExpiresByType image/png "access plus 1 month"
+</IfModule>
