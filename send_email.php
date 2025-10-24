@@ -5,7 +5,7 @@ header('Access-Control-Allow-Methods: POST');
 header('Access-Control-Allow-Headers: Content-Type');
 
 // Настройки
-$recipient_email = 'kovalev.vova@list.ru';
+$recipient_email = 'kovalev.vova@mail.ru';
 
 // Простая проверка на спам (без honeypot полей)
 function is_spam($data) {
