@@ -456,3 +456,82 @@ const mobileMenuStyles = `
 const styleSheet = document.createElement('style');
 styleSheet.textContent = mobileMenuStyles;
 document.head.appendChild(styleSheet);
+// Mobile menu functionality
+function initMobileMenu() {
+    const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+    const nav = document.querySelector('.nav');
+    const body = document.body;
+
+    if (mobileMenuBtn && nav) {
+        console.log('Mobile menu elements found');
+
+        mobileMenuBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            console.log('Mobile menu button clicked');
+
+            const isActive = nav.classList.contains('active');
+
+            if (isActive) {
+                // Close menu
+                nav.classList.remove('active');
+                mobileMenuBtn.classList.remove('active');
+                body.classList.remove('menu-open');
+                console.log('Menu closed');
+            } else {
+                // Open menu
+                nav.classList.add('active');
+                mobileMenuBtn.classList.add('active');
+                body.classList.add('menu-open');
+                console.log('Menu opened');
+            }
+        });
+
+        // Close menu when clicking on links
+        const navLinks = document.querySelectorAll('.nav-links a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                console.log('Nav link clicked, closing menu');
+                nav.classList.remove('active');
+                mobileMenuBtn.classList.remove('active');
+                body.classList.remove('menu-open');
+            });
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', function(e) {
+            if (nav.classList.contains('active') &&
+                !nav.contains(e.target) &&
+                !mobileMenuBtn.contains(e.target)) {
+                console.log('Clicked outside, closing menu');
+                nav.classList.remove('active');
+                mobileMenuBtn.classList.remove('active');
+                body.classList.remove('menu-open');
+            }
+        });
+
+        // Close menu on escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && nav.classList.contains('active')) {
+                console.log('Escape pressed, closing menu');
+                nav.classList.remove('active');
+                mobileMenuBtn.classList.remove('active');
+                body.classList.remove('menu-open');
+            }
+        });
+
+        // Handle window resize
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 767) {
+                // Close menu on desktop
+                nav.classList.remove('active');
+                mobileMenuBtn.classList.remove('active');
+                body.classList.remove('menu-open');
+            }
+        });
+    } else {
+        console.error('Mobile menu elements not found:', {
+            button: mobileMenuBtn,
+            nav: nav
+        });
+    }
+}
